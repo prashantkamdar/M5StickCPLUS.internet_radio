@@ -12,3 +12,5 @@ Changes from the original code:
 * Changed the reference libs from M5StickC to M5StickCPlus
 * Scaling everything for the larger screen
 * Removed dead stations
+
+(demo.jpg)
