@@ -13,4 +13,4 @@ Changes from the original code:
 * Scaling everything for the larger screen
 * Removed dead stations
 
-(demo.jpg)
+![demo](demo.jpg?raw=true)
