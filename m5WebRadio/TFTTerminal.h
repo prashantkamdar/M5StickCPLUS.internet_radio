@@ -1,7 +1,7 @@
 #ifndef _TFTTERMINAL_H_
 #define _TFTTERMINAL_H_
 
-#include <M5StickC.h>
+#include <M5StickCPlus.h>
 #include <Print.h>
 
 class TFTTerminal : public Print
@@ -14,9 +14,9 @@ private:
     uint16_t _bkcolor = TFT_BLACK;
     uint16_t _color = TFT_GREEN;
 
-    uint16_t _win_x_pos = 0,_win_y_pos = 0,_win_w = 160,_win_h = 80;
-    uint16_t _font_x_size = 6,_font_y_size = 8;
-    uint16_t _line_x_limit = 53,_line_y_limit = 30;
+    uint16_t _win_x_pos = 0,_win_y_pos = 0,_win_w = 240,_win_h = 135;
+    uint16_t _font_x_size = 10,_font_y_size = 12;
+    uint16_t _line_x_limit = 73,_line_y_limit = 50;
 
 public:
     TFTTerminal(TFT_eSprite *dis_buff_ptr);

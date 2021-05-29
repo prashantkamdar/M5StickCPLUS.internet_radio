@@ -28,8 +28,6 @@ char * arrayURL[11] = {
   "http://188.165.212.154:8478/stream",
   "https://igor.torontocast.com:1025/;.mp3",
   "http://streamer.radio.co/s06b196587/listen",
-  "http://sj32.hnux.com/stream?type=http&nocache=3104", 
-  "http://sl32.hnux.com/stream?type=http&nocache=1257", 
   "http://media-ice.musicradio.com:80/ClassicFMMP3",
   "http://naxos.cdnstream.com:80/1255_128",
   "http://149.56.195.94:8015/steam",
@@ -37,12 +35,10 @@ char * arrayURL[11] = {
 };
 String arrayStation[11] = {
   "Mega Shuffle",
-  "Orig. Top 40",
+  "Orig Top 40",
   "Way Up Radio",
   "Asia Dream",
   "KPop Way Radio",
-  "Smooth Jazz",
-  "Smooth Lounge",
   "Classic FM",
   "Lite Favorites",
   "MAXXED Out",
@@ -112,7 +108,7 @@ void ColorBar() {
             color_b = (i - 256) * 2;
             ;
         }
-        Disbuff.fillRect(0, 0, 180, 80, Disbuff.color565(color_r, color_g, color_b));
+        Disbuff.fillRect(0, 0, 240, 135, Disbuff.color565(color_r, color_g, color_b));
         Displaybuff();
     }
 
@@ -176,7 +172,7 @@ void ColorBar() {
             color_r = (color_r > 2) ? color_r - 1.0625 : 0U;
             color_g = (color_g > 2) ? color_g - 1.0625 : 0U;
             color_b = (color_b > 2) ? color_b - 1.0625 : 0U;
-            Disbuff.drawLine(159 - n, i * 20, 159 - n, (i + 1) * 20, Disbuff.color565(color_r, color_g, color_b));
+            Disbuff.drawLine(239 - n, i * 20, 239 - n, (i + 1) * 20, Disbuff.color565(color_r, color_g, color_b));
         }
     }
     Displaybuff();
@@ -194,22 +190,22 @@ void setup() {
   M5.Lcd.setRotation(3);
 
   // Screen Check
-  Disbuff.createSprite(160, 80);
-  Disbuff.fillRect(0,0,160,80,Disbuff.color565(10,10,10));
+  Disbuff.createSprite(240, 135);
+  Disbuff.fillRect(0,0,240,135,Disbuff.color565(10,10,10));
   Disbuff.pushSprite(0,0);
   delay(500);
   M5.Axp.ScreenBreath(12);
   ColorBar();
 
-  Disbuff.fillRect(0,0,160,80,TFT_BLACK);
-  Disbuff.setTextSize(2);
-  Disbuff.drawString("M5StickC", 0, 0, 1);
+  Disbuff.fillRect(0,0,240,135,TFT_BLACK);
+  Disbuff.setTextSize(3);
+  Disbuff.drawString("M5StickC PLUS", 0, 0, 1);
   Disbuff.drawString("    WebRadio", 0, 35, 1);
   Disbuff.pushSprite(0, 0);
   M5.update();
   M5.Lcd.fillScreen(BLACK);
-  M5.Lcd.setTextSize(2);
-  M5.Lcd.println("M5StickC");
+  M5.Lcd.setTextSize(3);
+  M5.Lcd.println("M5StickC PLUS");
   M5.Lcd.println("    WebRadio");
   delay(1000);
   M5.Lcd.println("WiFi");
@@ -219,11 +215,11 @@ void setup() {
 //  StartPlaying();
   M5.Lcd.fillScreen(BLACK);
   M5.Lcd.setTextSize(2);
-  M5.Lcd.setCursor(0, 0, 2);
+  M5.Lcd.setCursor(10, 0, 2);
   M5.Lcd.print("Ready");
 
   M5.Lcd.setTextSize(1);
-  M5.Lcd.setCursor(0, 30, 2);
+  M5.Lcd.setCursor(10, 50, 2);
   M5.Lcd.print("Ch ");
   M5.Lcd.print(sflag + 1);
   M5.Lcd.print(" - ");
@@ -247,7 +243,7 @@ void loop() {
       StartPlaying();
       playflag = 1;
       M5.Lcd.setTextSize(2);
-      M5.Lcd.setCursor(0, 0, 2);
+      M5.Lcd.setCursor(10, 0, 2);
       M5.Lcd.print("Playing");
     }
 
@@ -257,7 +253,7 @@ void loop() {
       station = arrayStation[sflag];           
       M5.Lcd.fillScreen(BLACK);
       M5.Lcd.setTextSize(1);
-      M5.Lcd.setCursor(0, 30, 2);
+      M5.Lcd.setCursor(10, 50, 2);
       M5.Lcd.print("Ch ");
       M5.Lcd.print(sflag + 1);
       M5.Lcd.print(" - ");
@@ -291,16 +287,16 @@ void loop() {
       playflag = 0;
       digitalWrite(LED , HIGH);
       M5.Lcd.setTextSize(2);
-      M5.Lcd.setCursor(0, 0, 2);
-      M5.Lcd.print("Stop     ");
-//      ESP.restart();
+      M5.Lcd.setCursor(10, 0, 2);
+      M5.Lcd.print("Stop       ");
     }
+
     if (digitalRead(BTNA) ==  LOW) {
       StopPlaying();
       playflag = 0;
       digitalWrite(LED , HIGH);
       M5.Lcd.setTextSize(2);
-      M5.Lcd.setCursor(0, 0, 2);
+      M5.Lcd.setCursor(10, 0, 2);
       M5.Lcd.print("Stop     ");
       talkie->begin(nullptr, out);
       talkie->say(spSTOP, sizeof(spSTOP));
@@ -331,7 +327,7 @@ void StartPlaying() {
   out->SetOutputModeMono(true);
 //  out->SetGain(0.3);
   out->SetGain(fgain*0.05);
-  M5.Lcd.fillTriangle(109, 20, 109 + (5 * fgain), 20, 109 + (5 * fgain), 20 - (2 * fgain), BLUE);
+  M5.Lcd.fillTriangle(109, 30, 109 + (5 * fgain), 30, 109 + (5 * fgain), 20 - (2 * fgain), BLUE);
   mp3 = new AudioGeneratorMP3();
   mp3->RegisterStatusCB(StatusCallback, (void*)"mp3");
   mp3->begin(buff, out);
@@ -390,7 +386,7 @@ void MDCallback(void *cbData, const char *type, bool isUnicode, const char *stri
   s2[sizeof(s2) - 1] = 0;
   Serial.printf("METADATA(%s) '%s' = '%s'\n", ptr, s1, s2);
   M5.Lcd.setTextSize(1);
-  M5.Lcd.setCursor(0, 45, 2);
+  M5.Lcd.setCursor(10, 65, 2);
   M5.Lcd.print(s2);
   M5.Lcd.print("                                                                                          ");
   Serial.flush();
