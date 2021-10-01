@@ -24,25 +24,25 @@ const char *PASSWORD = "";
 const int bufferSize = 16 * 1024; // buffer in byte, default 16 * 1024 = 16kb
 char * arrayURL[11] = {
   "http://jenny.torontocast.com:8134/stream",
-  "http://ais-edge09-live365-dal02.cdnstream.com/a25710",
   "http://188.165.212.154:8478/stream",
   "https://igor.torontocast.com:1025/;.mp3",
   "http://streamer.radio.co/s06b196587/listen",
   "http://media-ice.musicradio.com:80/ClassicFMMP3",
   "http://naxos.cdnstream.com:80/1255_128",
   "http://149.56.195.94:8015/steam",
-  "http://ice2.somafm.com/christmas-128-mp3"
+  "http://ice2.somafm.com/christmas-128-mp3",
+  "https://streaming-ent.shoutcast.com/foxnews"
 };
 String arrayStation[11] = {
   "Mega Shuffle",
-  "Orig Top 40",
   "Way Up Radio",
   "Asia Dream",
   "KPop Way Radio",
   "Classic FM",
   "Lite Favorites",
   "MAXXED Out",
-  "SomaFM Xmas"
+  "SomaFM Xmas",
+  "Fox News"
 };
 const int LED = 10;   // GPIO LED 
 const int BTNA = 37;  // GPIO Play and Pause
